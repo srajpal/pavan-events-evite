@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\EventType;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -44,5 +45,9 @@ class EventController extends Controller
             'location_email' => 'nullable|email|max:255',
             'location_url' => 'nullable|url|max:255',
         ]);
+
+        Event::create($validated);
+
+        return view('client.events')->with('success', 'Your event has been created.');
     }
 }

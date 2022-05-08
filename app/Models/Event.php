@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Event extends Model
 {
@@ -19,10 +20,18 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function eventType(): BelongsToMany
+    // public function eventType(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(EventType::class, 'event_eventtype', 'event_id', 'event_type_id');
+    // }
+
+    protected function eventType(): Attribute
     {
-        return $this->belongsToMany(EventType::class, 'event_eventtype', 'event_id', 'event_type_id');
+        return Attribute::make(
+            get: fn ($value) => EventType::find($value)->name,
+        );
     }
+
 
     public function guests(): BelongsToMany
     {

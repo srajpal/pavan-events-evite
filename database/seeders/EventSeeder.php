@@ -18,11 +18,14 @@ class EventSeeder extends Seeder
     public function run()
     {
         $client = User::where('role', User::USER_ROLE_CLIENT)->first();
-        Event::factory()->create([
+        // Event::factory()->create([
+        //     'user_id' => $client->id,
+        // ])->eventType()->attach(EventType::all()->random());
+        // Event::factory()->create([
+        //     'user_id' => $client->id,
+        // ])->eventType()->attach(EventType::all()->random());
+        Event::factory(2)->create([
             'user_id' => $client->id,
-        ])->eventType()->attach(EventType::all()->random());
-        Event::factory()->create([
-            'user_id' => $client->id,
-        ])->eventType()->attach(EventType::all()->random());
+        ]);
     }
 }

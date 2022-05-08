@@ -54,11 +54,11 @@
 
                                         @foreach ($events as $event)
                                             <tr>
-                                                <td class="align-middle text-center">
+                                                <td class="align-middle">
                                                     {{ $event->name }}
                                                 </td>
-                                                <td class="align-middle text-center">
-                                                    {{ $event->eventType[0]->name }}
+                                                <td class="align-middle">
+                                                    {{ $event->event_type }}
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     {{ $event->start_date_time }}
