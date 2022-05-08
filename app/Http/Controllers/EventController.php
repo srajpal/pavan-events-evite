@@ -24,4 +24,9 @@ class EventController extends Controller
             'eventTypes' => EventType::all()
         ]);
     }
+
+    function insert(Request $request)
+    {
+        dd($request);
+    }
 }

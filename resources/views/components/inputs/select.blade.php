@@ -1,6 +1,15 @@
-@props(['id', 'options' => [], 'selected' => '', 'initial' => '', 'key' => 'key', 'value' => 'value'])
+@props([
+    'label' => '',
+    'id',
+    'options' => [],
+    'selected' => '',
+    'initial' => '',
+    'key' => 'key',
+    'value' => 'value',
+])
 
-<div class="input-group input-group-outline mb-4">
+<div class="input-group input-group-static mb-4">
+    <label>{{ $label }}</label>
     <select class="form-control" id="{{ $id }}" name="{{ $id }}">
         <option value='' disabled selected>{{ $initial }}</option>
         @foreach ($options as $_o)

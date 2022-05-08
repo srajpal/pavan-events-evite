@@ -16,7 +16,7 @@
                                         <h6 class="text-white text-capitalize ps-3">Events table</h6>
                                     </div>
                                     <div class="col-6 text-end pe-4">
-                                        <a class="btn bg-gradient-dark mb-0 " href="/client/events/create"><i
+                                        <a class="btn bg-gradient-dark mb-0 " href="/client/event/create"><i
                                                 class="material-icons text-sm">add</i>&nbsp;&nbsp;Create new Event</a>
                                     </div>
                                 </div>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('host');
             $table->dateTime('start_date_time');
             $table->dateTime('end_date_time');
+            $table->text('message');
             $table->string('location_name');
             $table->string('location_address');
             $table->string('location_address2')->nullable();
@@ -29,7 +30,6 @@ return new class extends Migration
             $table->string('location_phone');
             $table->string('location_email');
             $table->string('location_url');
-            $table->text('message');
             $table->timestamps();
         });
     }
