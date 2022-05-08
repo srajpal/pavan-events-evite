@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
+use App\Models\EventType;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,8 +18,11 @@ class EventSeeder extends Seeder
     public function run()
     {
         $client = User::where('role', User::USER_ROLE_CLIENT)->first();
-        Event::factory(2)->create([
+        Event::factory()->create([
             'user_id' => $client->id,
-        ]);
+        ])->eventType()->attach(EventType::all()->random());
+        Event::factory()->create([
+            'user_id' => $client->id,
+        ])->eventType()->attach(EventType::all()->random());
     }
 }

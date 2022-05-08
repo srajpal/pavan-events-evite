@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->integer('event_type');
             $table->string('host');
             $table->dateTime('start_date_time');
             $table->dateTime('end_date_time');

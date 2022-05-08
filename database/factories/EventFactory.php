@@ -21,7 +21,6 @@ class EventFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => $this->faker->name(),
-            'event_type' => EventType::all()->random()->id,
             'host' => $this->faker->name(),
             'start_date_time' => $this->faker->dateTime(),
             'end_date_time' => $this->faker->dateTime(),
