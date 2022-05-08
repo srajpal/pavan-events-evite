@@ -13,6 +13,11 @@ class Guest extends Model
 
     protected $guarded = [];
 
+    const EVENT_NOT_SEEN = 0;
+    const EVENT_NOT_ANSWERED = 1;
+    const EVENT_ATTENDING = 2;
+    const EVENT_NOT_ATTENDING = 3;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('event_id')->unsigned();
             $table->integer('guest_id')->unsigned();
+            $table->integer('attending')->default(0);
             $table->timestamps();
         });
     }
