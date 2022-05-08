@@ -2,24 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\Event;
 use App\Models\EventType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class EventTypeSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            EventTypeSeeder::class,
-            EventSeeder::class,
-        ]);
+        EventType::create(['name' => 'Wedding']);
+        EventType::create(['name' => 'Birthday']);
+        EventType::create(['name' => 'Corporate']);
     }
 }

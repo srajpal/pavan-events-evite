@@ -3,23 +3,22 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
-use App\Models\EventType;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class EventSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            EventTypeSeeder::class,
-            EventSeeder::class,
+        $client = User::where('role', User::USER_ROLE_CLIENT)->first();
+        Event::factory(2)->create([
+            'user_id' => $client->id,
         ]);
     }
 }
