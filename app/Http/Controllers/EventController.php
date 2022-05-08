@@ -25,8 +25,24 @@ class EventController extends Controller
         ]);
     }
 
-    function insert(Request $request)
+    function store(Request $request)
     {
-        dd($request);
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'event_type' => 'required|exists:event_types,id',
+            'start_date_time' => 'required|date',
+            'end_date_time' => 'required|date|after:start_date_time',
+            'host' => 'required|max:255',
+            'message' => 'required|max:1000',
+            'location_name' => 'required|max:255',
+            'location_address' => 'required|max:255',
+            'location_address2' => 'nullable|max:255',
+            'location_city' => 'required|max:255',
+            'location_state' => 'required|max:255',
+            'location_zip' => 'required|digits:5',
+            'location_phone' => 'nullable|max:255',
+            'location_email' => 'nullable|email|max:255',
+            'location_url' => 'nullable|url|max:255',
+        ]);
     }
 }

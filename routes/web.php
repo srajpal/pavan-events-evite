@@ -31,5 +31,5 @@ Route::get('/login', function () {
 Route::get('/client/dashboard', [ClientDashboard::class, 'show']);
 Route::get('/client/events', [EventController::class, 'show']);
 Route::get('/client/event/create', [EventController::class, 'create']);
-Route::post('/client/event/insert', [EventController::class, 'insert']);
+Route::post('/client/event/store', [EventController::class, 'store']);
 Route::get('/client/guests', [GuestController::class, 'show']);

@@ -8,7 +8,7 @@
 
             <div class="row mb-4">
                 <div class="col-md-12 mb-lg-0 mb-4">
-                    <form method="post" action="/client/event/insert">
+                    <form method="post" action="/client/event/store">
                         @csrf
                         <div class="card mt-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -22,47 +22,47 @@
                                 </div>
                             </div>
                             <div class="card-body p-3">
-
                                 <div class="row">
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.text label="Event Name" id="name" />
+                                        <x-inputs.text label="Event Name *" id="name" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.select label="Event Type" id="event_type" :options="$eventTypes" key="id"
-                                            value="name" />
+                                        <x-inputs.select label="Event Type *" id="event_type" :options="$eventTypes" key="id"
+                                            value="name" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.datetime label="Event Start Date and Time" id="start_date_time" />
+                                        <x-inputs.datetime label="Event Star *" id="start_date_time" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.datetime label="Event End Date and Time" id="end_date_time" />
+                                        <x-inputs.datetime label="Event End *" id="end_date_time" :required=true />
                                     </div>
                                     <div class="col-md-12 mb-md-0 mb-2">
-                                        <x-inputs.text label="Event Host Name" id="host" />
+                                        <x-inputs.text label="Event Host Name *" id="host" :required=true />
                                     </div>
                                     <div class="col-md-12 mb-md-0 mb-2">
-                                        <x-inputs.textarea label="Event Message from Host" id="message" />
+                                        <x-inputs.textarea label="Event Message from Host *" id="message"
+                                            :required=true />
                                     </div>
                                     <div class="col-md-12 mb-md-0 mb-3">
                                         <h4>Event Location</h4>
                                     </div>
                                     <div class="col-md-12 mb-md-0 mb-2">
-                                        <x-inputs.text label="Location Name" id="location_name" />
+                                        <x-inputs.text label="Location Name *" id="location_name" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.text label="Address" id="location_address" />
+                                        <x-inputs.text label="Address *" id="location_address" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
                                         <x-inputs.text label="Address2" id="location_address2" />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.text label="Event Location City" id="location_city" />
+                                        <x-inputs.text label="City *" id="location_city" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.text label="Event Location State" id="location_state" />
+                                        <x-inputs.text label="State *" id="location_state" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
-                                        <x-inputs.text label="Zip" id="location_zip" />
+                                        <x-inputs.text label="Zip *" id="location_zip" :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
                                         <x-inputs.text label="Phone" id="location_phone" />
