@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ClientDashboard;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +29,5 @@ Route::get('/login', function () {
 });
 
 Route::get('/client/dashboard', [ClientDashboard::class, 'show']);
+Route::get('/client/events', [EventController::class, 'show']);
+Route::get('/client/guests', [GuestController::class, 'show']);
