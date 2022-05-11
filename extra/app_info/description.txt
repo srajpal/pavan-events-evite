@@ -1,0 +1,24 @@
+Play fun word games in both English or Sikhi (Punjabi with Sikhi terms). Get points for completing games and see how high you can get on the leaderboards.
+
+Guess the Word
+Play a guessing game where you fill in letters to guess the words. The game will give you hints as to how close you are to the solution. You can play in English or Sikhi. You can also decide on the word length, play using 4, 5 or 6 letter.
+
+Guess the Word game is inspired by Wordle, but inspirations from Sikhi.
+
+What is Sikhi?
+Sikhi means to learn. It means to help others and work to improve oneself.
+A Sikh is a follower of Sikhi.
+Sikhi stands for equality of gender, race, creed, and color.
+The tenants of Sikhi are a devotion to God, truthful living, and serving/helping others.
+
+What is a Sikh?
+Sikh means "Seeker of Truth", thus Sikhs strive to learn and improve themselves always.
+
+What is Khalsa?
+Khalsa means the cumulative group of people that follow the Sikhi faith but also it is the path to enlightenment that each strives for.
+
+How can I learn more about Sikhi?
+Visit https://www.sikhiwiki.org or visit your local Gurdwara (Sikh temple). Everyone is welcome to visit, explore, and ask questions.
+https://www.sikhiwiki.org/index.php/Gurdwara_Map
+
+The game is free but with ads support. Though we will never show you an ad without your permission. If you wish to view an ad you can click on a button, but ads are never shown without permission.
