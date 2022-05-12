@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,10 +21,10 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function eventType(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(EventType::class, 'event_eventtype', 'event_id', 'event_type_id');
-    // }
+    public function guests(): BelongsToMany
+    {
+        return $this->belongsToMany(Guest::class, 'event_guests', 'event_id', 'guest_id');
+    }
 
     protected function eventType(): Attribute
     {
@@ -32,9 +33,17 @@ class Event extends Model
         );
     }
 
-
-    public function guests(): BelongsToMany
+    protected function startDateTime(): Attribute
     {
-        return $this->belongsToMany(Guest::class, 'event_guests', 'event_id', 'guest_id');
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->format('m/d/Y h:i a'),
+        );
+    }
+
+    protected function endDateTime(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->format('m/d/Y h:i a'),
+        );
     }
 }

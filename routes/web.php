@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ClientDashboard;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LoginController;
@@ -27,14 +27,18 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/login', [LoginController::class, 'login']);
 
+// routes for authenticated (logged in) user that is a client
+Route::middleware(['auth', 'isClient'])->group(function () {
 
-Route::get('/client/dashboard', [ClientDashboard::class, 'show']);
+    Route::get('/client/dashboard', [ClientController::class, 'dashboard']);
 
-Route::get('/client/events', [EventController::class, 'show']);
-Route::get('/client/event/create', [EventController::class, 'create']);
-Route::post('/client/event/store', [EventController::class, 'store']);
+    Route::get('/client/events', [EventController::class, 'show']);
+    Route::get('/client/event/create', [EventController::class, 'create']);
+    Route::post('/client/event/store', [EventController::class, 'store']);
 
-Route::get('/client/guests', [GuestController::class, 'show']);
+    Route::get('/client/guests', [GuestController::class, 'show']);
+});

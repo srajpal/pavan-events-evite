@@ -36,7 +36,7 @@
                                 @csrf
                                 <x-inputs.text label="Email" id="email" :required=true />
                                 <x-inputs.text label="Password" id="password" :required=true :password=true />
-                                <x-inputs.checkbox label="Remember Me" id="rememberMe" />
+                                <x-inputs.checkbox label="Remember Me" id="remember" />
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign
                                         in</button>

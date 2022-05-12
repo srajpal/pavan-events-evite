@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ClientDashboard extends Controller
+class ClientController extends Controller
 {
-    function show()
+    function dashboard()
     {
         return view('client.dashboard');
     }

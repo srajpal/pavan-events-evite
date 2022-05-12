@@ -12,10 +12,14 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'remember' => 'nullable'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt([
+            'email' => $credentials['email'],
+            'password' => $credentials['password']
+        ], $credentials['remember'] ?? false)) {
             $request->session()->regenerate();
             $role = Auth::user()->role;
             $route = '';
@@ -38,5 +42,16 @@ class LoginController extends Controller
         return back()->withErrors([
             'main' => 'Email and Password do not match.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

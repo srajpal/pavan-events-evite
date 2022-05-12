@@ -33,7 +33,7 @@
                                 </div>
                             @endif
 
-                            <div class="table-responsive p-0">
+                            <div class="table-responsive p-2">
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
