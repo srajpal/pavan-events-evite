@@ -87,9 +87,10 @@
                                             <button class="btn btn-sm btn-secondary">
                                                 <i class="material-icons text-sm">group_add</i>
                                                 &nbsp;&nbsp;invite</button>
-                                            <button class="btn btn-sm btn-primary">
-                                                <i class="material-icons text-sm">edit</i>
-                                                &nbsp;&nbsp;edit</button>
+                                            <a class="btn btn-sm btn-primary"
+                                                href="/client/events/{{ $event->id }}/edit">
+                                                <i class="material-icons text-sm">edit</i>&nbsp;&nbsp;edit
+                                            </a>
                                         </td>
                                     @endif
                                 </tr>

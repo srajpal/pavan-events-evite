@@ -40,6 +40,7 @@ Route::middleware(['auth', 'isClient'])->group(function () {
     Route::get('/client/event/create', [EventController::class, 'create']);
     Route::post('/client/event/store', [EventController::class, 'store']);
     Route::get('/client/events/{event}/edit', [EventController::class, 'edit']);
+    Route::put('/client/events/{event}/update', [EventController::class, 'update']);
 
     Route::get('/client/guests', [GuestController::class, 'show']);
 });
