@@ -4,6 +4,7 @@
     'placeholder' => '',
     'value' => '',
     'required' => false,
+    'password' => false,
 ])
 
 <div class="input-group input-group-static my-3 @error($id) is-invalid @enderror">
@@ -13,6 +14,7 @@
             &nbsp;({{ $message }})
         @enderror
     </label>
-    <input type="text" class="form-control" id="{{ $id }}" name="{{ $id }}"
-        placeholder="{{ $placeholder }}" value="{{ old($id) ?? $value }}" {{ $required ? '' : '' }}>
+    <input type="{{ $password ? 'password' : 'text' }}" class="form-control" id="{{ $id }}"
+        name="{{ $id }}" placeholder="{{ $placeholder }}" value="{{ old($id) ?? $value }}"
+        {{ $required ? '' : '' }}>
 </div>

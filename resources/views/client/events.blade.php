@@ -1,5 +1,7 @@
 <x-layouts.app>
+
     <x-main.client-sidebar />
+
     <x-layouts.auth>
 
         <x-main.navbar :breadcrumbs="['Client Dashboard', 'Events']" title="Events" />
@@ -16,13 +18,21 @@
                                         <h6 class="text-white text-capitalize ps-3">Events table</h6>
                                     </div>
                                     <div class="col-6 text-end pe-4">
-                                        <a class="btn bg-gradient-dark mb-0 " href="/client/event/create"><i
-                                                class="material-icons text-sm">add</i>&nbsp;&nbsp;Create new Event</a>
+                                        <a class="btn bg-gradient-dark mb-0 " href="/client/event/create">
+                                            <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Create new Event
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
+
+                            @if (Session::has('success'))
+                                <div class="alert alert-success mx-10 text-white text-sm">
+                                    {{ Session::get('success') }}
+                                </div>
+                            @endif
+
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
                                     <thead>
@@ -47,7 +57,7 @@
                                                 Guests Accepted</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Edit</th>
+                                                Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,7 +83,12 @@
                                                     0
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <button class="btn btn-sm btn-primary">edit</button>
+                                                    <button class="btn btn-sm btn-secondary">
+                                                        <i class="material-icons text-sm">group_add</i>
+                                                        &nbsp;&nbsp;invite</button>
+                                                    <button class="btn btn-sm btn-primary">
+                                                        <i class="material-icons text-sm">edit</i>
+                                                        &nbsp;&nbsp;edit</button>
                                                 </td>
 
                                             </tr>

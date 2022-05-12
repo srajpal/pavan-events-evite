@@ -46,8 +46,10 @@ class EventController extends Controller
             'location_url' => 'nullable|url|max:255',
         ]);
 
-        Event::create($validated);
+        $user = User::find(2);
+        $user->events()->create($validated);
 
-        return view('client.events')->with('success', 'Your event has been created.');
+        //return view('client.events')->with('success', 'Your event has been created.');
+        return redirect('/client/events')->with('success', 'Your event has been created.');
     }
 }

@@ -28,9 +28,9 @@ return new class extends Migration
             $table->string('location_city');
             $table->string('location_state');
             $table->string('location_zip');
-            $table->string('location_phone');
-            $table->string('location_email');
-            $table->string('location_url');
+            $table->string('location_phone')->nullable();
+            $table->string('location_email')->nullable();
+            $table->string('location_url')->nullable();
             $table->timestamps();
         });
     }
