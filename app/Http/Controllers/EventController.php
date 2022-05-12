@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use App\Models\EventType;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -15,7 +14,7 @@ class EventController extends Controller
         // $events = $user->events;
         // dd($events);
         return view('client.events', [
-            'events' => User::find(2)->events
+            'events' => Auth::user()->events
         ]);
     }
 
@@ -46,8 +45,7 @@ class EventController extends Controller
             'location_url' => 'nullable|url|max:255',
         ]);
 
-        $user = User::find(2);
-        $user->events()->create($validated);
+        $event = Auth::user()->events()->create($validated);
 
         //return view('client.events')->with('success', 'Your event has been created.');
         return redirect('/client/events')->with('success', 'Your event has been created.');
