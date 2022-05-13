@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\EventType;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,10 +51,17 @@ class EventController extends Controller
 
         // the following line is giving an error in the ide where it cant find user()->events()
         // but it works when you run it
-        //$event = Auth::user()->events()->create($validated);
+        // the problem is that the User Model extends Authenticatable and that does not have the 
+        // correct relationship, only the User Model has the correct relationship
+        // So we have to initialize using the User Model
+        //Auth::user()->events()->create($validated);
 
-        $validated['user_id'] = Auth::user()->id;
-        Event::create($validated);
+        // this works the same as above but does not give the intelephense error
+        User::find(Auth::user()->id)->events()->create($validated);
+        
+        // the following also does the same thing
+        //$validated['user_id'] = Auth::user()->id;
+        //Event::create($validated);
 
         return redirect('/client/events')->with('success', 'Your event has been created.');
     }
