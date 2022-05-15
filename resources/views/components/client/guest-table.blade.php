@@ -1,8 +1,8 @@
 @props([
     'title' => '',
-    'events' => [],
-    'createEvents' => true,
-    'editEvents' => true,
+    'guests' => [],
+    'createGuest' => true,
+    'editGuests' => true,
 ])
 
 <div class="row">
@@ -14,10 +14,10 @@
                         <div class="col-6 text-start">
                             <h6 class="text-white text-capitalize ps-3">{{ $title }}</h6>
                         </div>
-                        @if ($createEvents)
+                        @if ($createGuest)
                             <div class="col-6 text-end pe-4">
-                                <a class="btn bg-gradient-dark mb-0 " href="/client/event/create">
-                                    <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Create new Event
+                                <a class="btn bg-gradient-dark mb-0 " href="/client/guest/create">
+                                    <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Create new Guest
                                 </a>
                             </div>
                         @endif
@@ -27,7 +27,7 @@
             </div>
             <div class="card-body px-0 pb-2">
 
-                @if ($createEvents && Session::has('success'))
+                @if ($createGuest && Session::has('success'))
                     <div class="alert alert-success mx-10 text-white text-sm">
                         {{ Session::get('success') }}
                     </div>
@@ -40,59 +40,47 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     Name</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Type</th>
+                                    Email</th>
                                 <th
                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Start Date</th>
+                                    Phone</th>
                                 <th
                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    End Date</th>
+                                    # Guests</th>
                                 <th
                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Guests Invited</th>
+                                    Events</th>
                                 <th
                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Guests Accepted</th>
-                                @if ($editEvents)
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Options</th>
-                                @endif
+                                    Options</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($events as $event)
+                            @foreach ($guests as $guest)
                                 <tr>
                                     <td class="align-middle">
-                                        {{ $event->name }}
+                                        {{ $guest->name }}
                                     </td>
                                     <td class="align-middle">
-                                        {{ $event->event_type }}
+                                        {{ $guest->email }}
                                     </td>
                                     <td class="align-middle text-center">
-                                        {{ $event->start_date_time }}
+                                        {{ $guest->phone }}
                                     </td>
                                     <td class="align-middle text-center">
-                                        {{ $event->end_date_time }}
+                                        {{ $guest->guests }}
                                     </td>
                                     <td class="align-middle text-center">
-                                        {{ count($event->guests) }}
+                                        {{ count($guest->events) }}
                                     </td>
-                                    <td class="align-middle text-center">
-                                        0
+                                    <td>
+                                        <a class="btn btn-sm btn-primary"
+                                            href="/client/guests/{{ $guest->id }}/edit">
+                                            <i class="material-icons text-sm">edit</i>&nbsp;&nbsp;edit
+                                        </a>
                                     </td>
-                                    @if ($editEvents)
-                                        <td class="align-middle text-center">
-                                            <button class="btn btn-sm btn-secondary">
-                                                <i class="material-icons text-sm">group_add</i>
-                                                &nbsp;&nbsp;invite</button>
-                                            <a class="btn btn-sm btn-primary"
-                                                href="/client/events/{{ $event->id }}/edit">
-                                                <i class="material-icons text-sm">edit</i>&nbsp;&nbsp;edit
-                                            </a>
-                                        </td>
-                                    @endif
+
                                 </tr>
                             @endforeach
 

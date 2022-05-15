@@ -43,4 +43,8 @@ Route::middleware(['auth', 'isClient'])->group(function () {
     Route::put('/client/events/{event}/update', [EventController::class, 'update']);
 
     Route::get('/client/guests', [GuestController::class, 'show']);
+    Route::get('/client/guest/create', [GuestController::class, 'create']);
+    Route::post('/client/guest/store', [GuestController::class, 'store']);
+    Route::get('/client/guests/{guest}/edit', [GuestController::class, 'edit']);
+    Route::put('/client/guests/{guest}/update', [GuestController::class, 'update']);
 });

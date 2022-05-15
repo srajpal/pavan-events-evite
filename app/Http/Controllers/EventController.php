@@ -30,18 +30,22 @@ class EventController extends Controller
 
     function show()
     {
-        // $user = User::find(2);
-        // $events = $user->events;
-        // dd($events);
+        //$events = User::find(Auth::user()->id)->events();
+        $upcomingEvents = User::find(Auth::user()->id)->events()->where('start_date_time', '>=', now())->get();
+        $pastEvents = User::find(Auth::user()->id)->events()->where('start_date_time', '<', now())->get();
         return view('client.events', [
-            'events' => Auth::user()->events
+            //'events' => Auth::user()->events,
+            'upcomingEvents' => $upcomingEvents,
+            'pastEvents' => $pastEvents
         ]);
     }
 
     function create()
     {
         return view('client.events-form', [
-            'eventTypes' => EventType::all()
+            'eventTypes' => EventType::all(),
+            'event' => new Event(),
+            'edit' => false,
         ]);
     }
 
@@ -51,14 +55,14 @@ class EventController extends Controller
 
         // the following line is giving an error in the ide where it cant find user()->events()
         // but it works when you run it
-        // the problem is that the User Model extends Authenticatable and that does not have the 
+        // the problem is that the User Model extends Authenticatable and that does not have the
         // correct relationship, only the User Model has the correct relationship
         // So we have to initialize using the User Model
         //Auth::user()->events()->create($validated);
 
         // this works the same as above but does not give the intelephense error
         User::find(Auth::user()->id)->events()->create($validated);
-        
+
         // the following also does the same thing
         //$validated['user_id'] = Auth::user()->id;
         //Event::create($validated);

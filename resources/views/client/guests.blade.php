@@ -1,6 +1,15 @@
 <x-layouts.app>
+
     <x-main.client-sidebar />
+
     <x-layouts.auth>
-        <h1>Guests</h1>
+
+        <x-main.navbar :breadcrumbs="['Client Dashboard', 'Guests']" title="Guests" />
+
+        <div class="container-fluid py-2">
+
+            <x-client.guest-table title="Guests" :guests=$guests />
+
+        </div>
     </x-layouts.auth>
 </x-layouts.app>

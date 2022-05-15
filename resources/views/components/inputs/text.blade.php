@@ -1,7 +1,7 @@
 @props([
     'label' => '',
     'id',
-    'placeholder' => '',
+    'placeholder' => null,
     'value' => '',
     'required' => false,
     'password' => false,
@@ -15,6 +15,6 @@
         @enderror
     </label>
     <input type="{{ $password ? 'password' : 'text' }}" class="form-control" id="{{ $id }}"
-        name="{{ $id }}" placeholder="{{ $placeholder }}" value="{{ old($id) ?? $value }}"
+        name="{{ $id }}" placeholder="{{ $placeholder ?? $label }}" value="{{ old($id) ?? $value }}"
         {{ $required ? '' : '' }}>
 </div>

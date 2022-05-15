@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('email');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->integer('guests');
             $table->timestamps();
         });
