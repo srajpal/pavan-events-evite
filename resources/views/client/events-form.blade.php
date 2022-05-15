@@ -44,7 +44,7 @@
                                                 $end_date_time = Carbon\Carbon::parse($event->end_date_time)->format('Y-m-d\TH:i:s');
                                             }
                                         @endphp
-                                        <x-inputs.datetime label="Event Star *" id="start_date_time" :value="$start_date_time"
+                                        <x-inputs.datetime label="Event Start *" id="start_date_time" :value="$start_date_time"
                                             :required=true />
                                     </div>
                                     <div class="col-md-6 mb-md-0 mb-2">
