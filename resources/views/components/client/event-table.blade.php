@@ -77,16 +77,21 @@
                                         {{ $event->end_date_time }}
                                     </td>
                                     <td class="align-middle text-center">
-                                        {{ count($event->guests) }}
+                                        <a class="btn btn-sm btn-secondary"
+                                            href="/client/events/{{ $event->id }}/invites">
+                                            {{ count($event->guests) }}
+                                        </a>
                                     </td>
                                     <td class="align-middle text-center">
                                         0
                                     </td>
                                     @if ($editEvents)
                                         <td class="align-middle text-center">
-                                            <button class="btn btn-sm btn-secondary">
+                                            {{-- <a class="btn btn-sm btn-secondary"
+                                                href="/client/events/{{ $event->id }}/invites">
                                                 <i class="material-icons text-sm">group_add</i>
-                                                &nbsp;&nbsp;invite</button>
+                                                &nbsp;&nbsp;invite
+                                            </a> --}}
                                             <a class="btn btn-sm btn-primary"
                                                 href="/client/events/{{ $event->id }}/edit">
                                                 <i class="material-icons text-sm">edit</i>&nbsp;&nbsp;edit

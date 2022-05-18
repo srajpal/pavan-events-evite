@@ -8,7 +8,7 @@
 
         <div class="container-fluid py-2">
 
-            <x-client.guest-table title="Guests" :guests=$guests />
+            <x-client.guest-table title="Guests" :guests=$guests :invite=false />
 
         </div>
     </x-layouts.auth>

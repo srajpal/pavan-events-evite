@@ -88,4 +88,12 @@ class EventController extends Controller
 
         return redirect('/client/events')->with('success', 'The event was updated.');
     }
+
+    function invites(Event $event)
+    {
+        return view('client.invites', [
+            'event' => $event,
+            'guests' => Auth::user()->guests,
+        ]);
+    }
 }
