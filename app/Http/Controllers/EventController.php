@@ -91,9 +91,11 @@ class EventController extends Controller
 
     function invites(Event $event)
     {
+        $pastEvent = strtotime($event->start_date_time) < time();
         return view('client.invites', [
             'event' => $event,
             'guests' => Auth::user()->guests,
+            'pastEvent' => $pastEvent,
         ]);
     }
 }

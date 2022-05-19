@@ -1,10 +1,9 @@
 @props([
     'title' => '',
     'guests' => [],
-    'createGuest' => true,
-    'editGuests' => true,
     'invite' => false,
     'event' => null,
+    'pastEvent' => false,
 ])
 
 <div class="row">
@@ -21,23 +20,13 @@
                                 @endif
                             </h6>
                         </div>
-                        @if (!$invite && $createGuest)
-                            <div class="col-6 text-end pe-4">
-                                <a class="btn bg-gradient-dark mb-0 " href="/client/guest/create">
-                                    <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Create new Guest
-                                </a>
-                            </div>
-                        @endif
-
                     </div>
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
 
-                @if ($createGuest && Session::has('success'))
-                    <div class="alert alert-success mx-10 text-white text-sm">
-                        {{ Session::get('success') }}
-                    </div>
+                @if (!$pastEvent)
+                    <form method="POST" action="/client/events/{{ $event->id }}/invites/update">
                 @endif
 
                 <div class="table-responsive p-2">
@@ -74,7 +63,14 @@
                                 <tr>
                                     @if ($invite)
                                         <td class="align-middle">
-                                            <x-inputs.checkbox label="" id="invite" />
+                                            @if ($guest->events->find($event->id))
+                                                <i class="material-icons text"
+                                                    style="font-size: xx-large;">mark_email_read</i>
+                                            @else
+                                                @if (!$pastEvent)
+                                                    <x-inputs.checkbox label="" id="invite" />
+                                                @endif
+                                            @endif
                                         </td>
                                     @endif
                                     <td class="align-middle">
@@ -106,6 +102,11 @@
                         </tbody>
                     </table>
                 </div>
+
+                @if (!$pastEvent)
+                    </form>
+                @endif
+
             </div>
 
         </div>
